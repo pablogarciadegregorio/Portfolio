@@ -9,7 +9,7 @@ const projectsData = [
   {
     id: 1,
     title: "React Portfolio Website",
-    description: "Next.js, Typescript, React, Tailwind y Framer Motion",
+    description: "Next.js, Typescript, React, Tailwind y Framer Motion \n ‎‎‎‎‎‎‎",
     image: "images/projects/1.jpg",
     tag: ["Todos", "Web"],
     gitUrl: "/",
@@ -42,22 +42,14 @@ const projectsData = [
     gitUrl: "/",
     previewUrl: "/",
   },
+  
   {
     id: 5,
-    title: "React Firebase Template",
-    description: "Authentication and CRUD operations",
-    image: "/images/projects/5.png",
-    tag: ["Todos", "Mobile"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 6,
     title: "Merchandising",
     description: "Diseño de productos para bandas",
     image: "/images/projects/reloj1.jpg",
     tag: ["Todos", "Diseño"],
-    gitUrl: "/",
+    // gitUrl: "/",
     previewUrl: "/",
   },
 ];

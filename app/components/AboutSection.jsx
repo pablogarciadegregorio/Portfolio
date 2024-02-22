@@ -83,7 +83,7 @@ const AboutSection = () => {
         <Image className="hidden sm:block aspect-square rounded-circleImage" src="/images/prueba01.jpg" width={500} height={500} />
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white pt-8 md:pt-0">Sobre mí</h2>
-          <p className="text-base lg:text-lg mt-4">
+          <p className="text-base text-justify lg:text-lg mt-4">
             Soy un Desarrollador de Software y Diseñador de Experiencia de Usuario
             apasionado por la creación de aplicaciones y herramientas que solucionen problemas concretos.
             Mi mayor motivación es el <strong>aprendizaje continuo</strong>. Aprendo rápido y siempre estoy buscando ampliar mis conocimientos y habilidades.
