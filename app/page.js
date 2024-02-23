@@ -8,7 +8,7 @@ import ProjectSection from "./components/ProjectSection";
 import EmailSection from "./components/EmailSection";
 import Footer from "./components/Footer";
 import AchievementsSection from "./components/AchievementsSection";
-import Background from "./components/background";
+import Background from "./components/Background";
 import Quiz from "./components/Quiz";
 
 export default function Home() {
