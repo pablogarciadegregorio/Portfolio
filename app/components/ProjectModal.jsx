@@ -11,8 +11,8 @@ import FishermansCD from "../../public/images/projects/FishermansCD.png";
 import Tarjeta from "../../public/images/projects/Business Card.png";
 import EPK from "../../public/images/projects/Booklet EPK mockup.png";
 import Banner from "../../public/images/projects/Banner.png";
-import Reloj1 from "../../public/images/projects/reloj1.jpg";
-import Reloj2 from "../../public/images/projects/reloj2.jpg";
+import reloj1 from "../../public/images/projects/reloj1.jpg";
+import reloj2 from "../../public/images/projects/reloj2.jpg";
 import Postal from "../../public/images/projects/postcard.png";
 import illustrator from "../../public/images/illustrator-icon.svg";
 import Photoshop from "../../public/images/photoshop-icon.svg";
@@ -141,12 +141,12 @@ const Merchandising = <div className="text-white p-2 sm:p-4 lg:p-8 md:p-4">
   <div className=" CDs mt-2 sm:grid sm:grid-cols-2 sm:gap-4 sm:mt-16 sm:mb-16 md:grid md:grid-cols-2   items-center ">
     <Image
       className="rounded-lg w-[100%] h-[100%] mb-8 sm:mb-0  "
-      src={Reloj1}
+      src={reloj1}
       alt="Reloj de bolsillo con imagen personalizado"
     />
     <Image
       className="rounded-lg w-[100%] h-[100%] "
-      src={Reloj2}
+      src={reloj2}
       alt="Reloj de bolsillo con imagen personalizado"
     />
   </div>
