@@ -49,7 +49,7 @@ const projectsData = [
     description: "Diseño de productos para bandas",
     image: "/images/projects/pologuru.jpg",
     tag: ["Todos", "Diseño"],
-    // gitUrl: "/",
+    gitUrl: "/",
     previewUrl: "/",
   },
 ];
