@@ -47,7 +47,7 @@ const projectsData = [
     id: 5,
     title: "Merchandising",
     description: "Diseño de productos para bandas",
-    image: "/images/projects/pologuru.jpg",
+    image: "/images/projects/reloj1.jpg",
     tag: ["Todos", "Diseño"],
     gitUrl: "/",
     previewUrl: "/",
