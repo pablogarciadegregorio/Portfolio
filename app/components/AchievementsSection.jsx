@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import AnimatedNumber from "react-animated-number";
+// import AnimatedNumber from "react-animated-number";
 
 
 
@@ -37,7 +37,7 @@ const AchievementsSection = () => {
             >
               <h2 className="text-white text-4xl font-bold flex flex-row">
                 {achievement.prefix}
-                <AnimatedNumber
+                {/* <AnimatedNumber
                   value={parseInt(achievement.value)}
                   formatValue={n=>n.toFixed(0)}
                   style={{
@@ -51,7 +51,7 @@ const AchievementsSection = () => {
                  
                   className="text-white text-4xl font-bold"
                   
-                />
+                /> */}
                 {achievement.postfix}
               </h2>
               <p className="text-[#ADB7BE] text-base">{achievement.metric}</p>
