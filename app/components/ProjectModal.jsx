@@ -7,7 +7,7 @@ import Vidriera from "../../public/images/projects/Vidriera Black.png";
 import Chapas from "../../public/images/projects/Chapas pagoda.png";
 import Poster from "../../public/images/projects/Megamatas Poster Clippers.png";
 import SouleckCD from "../../public/images/projects/Souleck CD.png";
-import FishermansCD from "../../public/images/projects/Fisherman's CD.png";
+import FishermansCD from "../../public/images/projects/FishermansCD.png";
 import Tarjeta from "../../public/images/projects/Business Card.png";
 import EPK from "../../public/images/projects/Booklet EPK mockup.png";
 import Banner from "../../public/images/projects/Banner.png";
