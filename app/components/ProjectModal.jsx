@@ -236,7 +236,6 @@ const Modal = ({ closeModal, handleCloseModal, projectName }) => {
           </div>
 
         {renderModalContent(projectName)}
-          {/* {Merchandising} */}
         </div>
       </div>
     </>

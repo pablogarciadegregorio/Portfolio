@@ -11,7 +11,6 @@ const EmailSection = ({modalIsOpen}) => {
 
   const form = useRef();
 
-  console.log(modalIsOpen)
 
   const sendEmail = (e) => {
     e.preventDefault();

@@ -2,6 +2,7 @@
 import React, { useState, useTransition } from "react";
 import Image from "next/image";
 import TabButton from "./TabButton";
+import Quiz from "./Quiz"
 
 
 
@@ -70,6 +71,8 @@ const TAB_DATA = [
 const AboutSection = () => {
   const [tab, setTab] = useState("skills");
   const [isPending, startTransition] = useTransition();
+  const [quizIsOpen,setQuizIsOpen] = useState(false);
+  console.log(quizIsOpen)
 
   const handleTabChange = (id) => {
     startTransition(() => {
@@ -77,11 +80,20 @@ const AboutSection = () => {
     });
   };
 
+  const handleCloseQuiz = (closed) => {
+    setQuizIsOpen(closed);
+  };
+
+
   return (
     <section id="aboutSection"  className="z-9 relative text-white scroll-mt-16">
-      <div className="md:grid md:grid-cols-2 gap-8  py-8  px-4 xl:gap-16 sm:py-16 xl:px-16">
+      <div className="md:grid md:grid-cols-2 gap-8  py-8  px-4 xl:gap-16 sm:py-16 xl:px-16 items-center">
         <Image className="hidden sm:block aspect-square rounded-circleImage" src="/images/prueba01.jpg" width={500} height={500} />
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
+        { quizIsOpen ?
+          <Quiz quizClose={handleCloseQuiz}/>
+          :
+
+          <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white pt-8 md:pt-0">Sobre mí</h2>
           <p className="text-base text-justify lg:text-lg mt-4">
             Soy un Desarrollador de Software y Diseñador de Experiencia de Usuario
@@ -91,8 +103,9 @@ const AboutSection = () => {
             <br></br>
             Tengo un amplio background del mundo del deporte, la diversidad funcional y la música, que me han ayudado a 
             ser disciplinado, paciente y creativo.
-            
           </p>
+
+          <p className="lg:text-lg mt-4">¿Quieres saber más? <button onClick={()=> setQuizIsOpen(true)}className="px-2 py-1 w-full sm:ml-2 sm:w-fit rounded-full   font-semibold bg-gradienteBoton hover:bg-gradienteBotonHover text-white">¡Juega!</button></p>
           <div className=" sm:inline-block lg:flex lg:flex-row justify-start mt-8">
             <TabButton selectTab={()=>handleTabChange("skills")} active={tab === "skills"}>
             {""}
@@ -118,6 +131,12 @@ const AboutSection = () => {
           </div>
           <div className="mt-8 ">{TAB_DATA.find((t)=> t.id === tab).content}</div>
         </div>
+
+
+
+        }
+
+       
       </div>
     </section>
   );

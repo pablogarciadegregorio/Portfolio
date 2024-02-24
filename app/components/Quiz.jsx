@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import closeIcon from "../../public/images/close-icon.svg";
+import rightArrow from "../../public/images/projects/rightarrow.svg";
+import Image from "next/image";
 
-export default function App() {
+export default function Quiz({quizClose}) {
   const questions = [
     {
-      questionText: "Soy músico y toco un instrumento afinable ¿Cuál?",
+      questionText: "Toco un instrumento afinable ¿Cuál?",
       answerOptions: [
         { answerText: "Violín", isCorrect: false },
         { answerText: "Guitarra", isCorrect: false },
@@ -44,7 +47,7 @@ export default function App() {
         answerOptions: [
           { answerText: "Personas sordociegas", isCorrect: false },
           { answerText: "Personas con discapacidad intelectual", isCorrect: true },
-          { answerText: "Lesionados medulares", isCorrect: false },
+          { answerText: "Personas sin hogar", isCorrect: false },
           { answerText: "Ancianos", isCorrect: false },
         ],
       },
@@ -77,7 +80,7 @@ export default function App() {
         ],
       },
       {
-        questionText: "En el instituto, gané un premio en un concurso de ",
+        questionText: "De pequeño gané un premio en un concurso de ",
         answerOptions: [
             { answerText: "Atletismo", isCorrect: false },
             { answerText: "Ortografía", isCorrect: true },
@@ -86,9 +89,9 @@ export default function App() {
         ],
       },
       {
-        questionText: "No puedo vivir sin comer",
+        questionText: "Soy adicto a una de estas comidas",
         answerOptions: [
-            { answerText: "Gonminolas", isCorrect: true },
+            { answerText: "Gominolas", isCorrect: true },
             { answerText: "Jamón serrano", isCorrect: false },
           { answerText: "Helado", isCorrect: false },
           { answerText: "Chocolate", isCorrect: false },
@@ -100,7 +103,10 @@ export default function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
+  const [grade,setGrade] = useState(0)
   const [isAnswered, setIsAnswered] = useState(false);
+
+  
 
   const handleAnswerButtonClick = (isCorrect) => {
     setIsAnswered(true);
@@ -111,6 +117,8 @@ export default function App() {
   };
 
   const handleNextAnswer = () => {
+
+    if (!isAnswered) {return null}
 
     setIsAnswered(false)
     const nextQuestion = currentQuestion + 1;
@@ -123,20 +131,22 @@ export default function App() {
   }
 
   const scoreText = () => {
-    if (score < 2) {
+
+
+    if (score < 5) {
       return (
         <p>
           Parece que tu gato se ha sentado encima del teclado. Prueba otra vez.
         </p>
       );
     }
-    if (score > 1 || score < 5) {
+    if (score >= 5 || grade < 6) {
       return <p>Aprobado raspado. Tus padres no estarían orgullosos...</p>;
     }
-    if (score > 4 || score < 8) {
+    if (score >= 6 || grade < 8) {
       return <p>Sabes bastantes cosas sobre mí. ¿Debería preocuparme?</p>;
     }
-    if (score > 6) {
+    if (score >= 8) {
       return <p>Venga, ahora intentalo sin hacer trampas.</p>;
     }
   };
@@ -150,19 +160,18 @@ export default function App() {
 
   const handleAnswerClassName = (isCorrect) => {
     if (!isAnswered) {
-      return "w-100 text-xl bg-[#252d4a] border-4 rounded-full text-center border-[#234668] flex justify-center items-center p-2 hover:bg-[#5b6898]";
+      return "w-100 text-xl bg-gradienteBoton border-[2px] rounded-full text-center border-[#ffffff] border-opacity-40	 flex justify-center items-center p-2 hover:bg-gradienteBotonHover";
     } else {
       if (isCorrect) {
-        return "cursor-default w-100 text-xl bg-green-600 border-4 rounded-full text-center border-[#234668] flex justify-center items-center p-2 ";
+        return "cursor-default w-100 text-xl bg-green-600 border-4 rounded-full text-center border-green-700 flex justify-center items-center p-2 ";
       }
       if (!isCorrect) { return "invisible   cursor-default w-100 text-xl bg-red-600 border-4 rounded-full text-center border-[#234668] flex justify-center items-center p-2 ";}
     }
   };
 
   return (
-    <div className="app flex justify-evenly  bg-[#252d4a] h-min rounded-lg p-8 shadow-lg text-white">
-      {/* HINT: replace "false" with logic to display the 
-      score when the user has answered all the questions */}
+    <div className="flex flex-col bg-transparent backdrop-blur-sm border-2 border-slate-600 h-full rounded-lg p-8 shadow-lg text-white">
+     
       {showScore ? (
         <div className="score-section flex flex-col gap-y-4 text-2xl items-center">
           <p>
@@ -170,7 +179,7 @@ export default function App() {
           </p>
           {scoreText()}
           <button
-            className="w-100 text-xl bg-[#252d4a] border-4 rounded-full text-center border-[#234668] flex justify-center items-center p-2 hover:bg-[#5b6898]"
+            className="w-100 text-xl bg-gradienteBoton  rounded-full text-center  flex justify-center items-center  p-2 hover:bg-gradienteBotonHover"
             onClick={() => handleRestart()}
           >
             Volver a jugar
@@ -178,16 +187,24 @@ export default function App() {
         </div>
       ) : (
         <>
-          <div className="question-section w-100 relative">
-            <div className="question-count mb-8">
-              <span className="text-3xl">Pregunta {currentQuestion + 1}</span>/
+          <div className="question-section w-full relative">
+            <div className="question-count text-xl mb-8">
+              <span className="text-3xl">{currentQuestion + 1}</span>/
               {questions.length}
+              <span>
+              <Image
+              onClick={() => quizClose(false)}
+              className="mt-1 w-[30px] h-[30px] sm:w-[35px] sm:h-[35px] md:w-[25px] md:h-[25px]  float-right hover:cursor-pointer"
+              src={closeIcon}
+              alt="close button"
+      />
+              </span>
             </div>
-            <div className="question-text mb-4">
+            <div className="question-text mb-4 text-xl">
               {questions[currentQuestion].questionText}
             </div>
           </div>
-          <div className="answer-section w-100 flex flex-col justify-between gap-y-2">
+          <div className="answer-section  flex flex-col  gap-y-5 mt-4">
             {questions[currentQuestion].answerOptions.map((answerOption) => (
               <button
                 className={handleAnswerClassName(answerOption.isCorrect, )}
@@ -200,11 +217,14 @@ export default function App() {
               onClick={() => handleNextAnswer()}
               className={
                 !isAnswered
-                  ? "cursor-not-allowed w-100 text-xl bg-[#252d4a] border-4 rounded-full text-center border-[#234668] flex justify-center items-center p-2"
-                  : "w-100 text-xl bg-[#252d4a] border-4 rounded-full text-center border-[#234668] flex justify-center items-center p-2 hover:bg-[#5b6898]"
+                  ? "cursor-not-allowed  w-fit text-xl   bg-[#252d4a] bg-opacity-10 rounded-full text-center   flex justify-center  self-end p-2"
+                  : "w-fit text-xl border-2 rounded-full bg-[#252d4a] border-[#000] border-opacity-20 text-center flex justify-center items-center self-end p-2 hover:bg-[#5b6898]"
               }
             >
-              Siguiente
+              <Image
+              className="mt-1 w-[30px] h-[30px] sm:w-[35px] sm:h-[35px] md:w-[25px] md:h-[25px]"
+              src={rightArrow}
+              alt="next button"/>
             </button>
           </div>
         </>
