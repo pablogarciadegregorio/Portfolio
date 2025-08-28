@@ -17,7 +17,7 @@ const Collagenious = () => {
           Dale al play y activa el sonido para ver un resumen del trabajo
         </p>
         <video
-          src="/video/collagenious-video.mp4"
+          src="/images/projects/collagenious-video.mp4"
           controls
           playsInline
           className="w-full h-auto rounded-lg  z-20"
