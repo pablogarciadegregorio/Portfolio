@@ -6,13 +6,26 @@ import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-  });
+ useEffect(() => {
+  // Ahora, todo el código que usa `window` está dentro del useEffect
+  // Esto garantiza que solo se ejecute en el navegador
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 640);
+  };
+  
+  // Llama a la función al inicio para establecer el valor inicial
+  handleResize();
+
+  // Y suscribe al evento de redimensionamiento
+  window.addEventListener('resize', handleResize);
+
+  // No olvides limpiar el evento para evitar fugas de memoria
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, []);
 
   return (
     <section className="relative z-11 px-8 sm:px-0 lg:py-32">
