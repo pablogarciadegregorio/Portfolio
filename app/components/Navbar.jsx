@@ -10,51 +10,52 @@ import PGlogo from "../../public/images/projects/PGlogowhite.svg";
 const navLinks = [
   {
     title: "Sobre mí",
-    // l33t: "4b0ut",
     path: "#aboutSection",
   },
   {
-    title: "Proyectos",
-    // l33t: "Pr0j3ct5",
+    title: "Trabajos",
     path: "#projectSection",
   },
   {
     title: "Contacto",
-    // l33t: "C0nt4ct5",
     path: "#contactSection",
   },
 ];
+
+
 
 const Navbar = () => {
   const [navBarOpen, setNavBarOpen] = useState(false);
 
   return (
-    <nav className="fixed  top-0 left-0 right-0 z-10 bg-gradienteNavbar bg-opacity-100 border-b border-[#33353f]">
-      <div className="flex container lg:py-4 flex-wrap item-center justify-between mx-auto px-4 py-2 ">
-        <Link
+    <nav className="fixed  top-0 left-0 right-0 z-50 bg-[radial-gradient(circle,rgba(29,15,58,1)_0%,rgba(16,8,29,1)_65%)] bg-opacity-100 border-b border-[#33353f]">
+      <div className="flex container lg:py-4 flex-wrap item-center justify-between mx-auto px-4 lg:px-12 py-2 ">
+        <a
           href={"/"}
-          className="text-2xl md:text-5xl text-white font-semibold"
+          className="text-2xl md:text-5xl text-white font-semibold justify-center items-center flex"
         >
           <Image
-            className="fill-white w-[40px] h-[40px] md:w-[60px] md:h-[60px]"
+            className={ navBarOpen? "hidden" : "fill-white w-[40px] h-[40px] md:w-[60px] md:h-[60px] flex"}
             src={PGlogo}
             alt="pablo garcia logo"
+            width={60}
+            height={60}
           />
-        </Link>
+        </a>
         <div className="mobile-menu block md:hidden">
           {!navBarOpen ? (
             <button
               onClick={() => setNavBarOpen(true)}
-              className="flex items-center px-3 py-2 border border-slate-200 rounded text-slate-200 hover:text-white hover:border-text-white"
+              className="flex items-center px-3 py-2  text-slate-200   "
             >
-              <Bars3Icon className="h-5 w-5 " />
+              <Bars3Icon className="h-10 w-10 " />
             </button>
           ) : (
             <button
               onClick={() => setNavBarOpen(false)}
-              className="flex items-center px-3 py-2 rounded border border-slate-200 text-slate-200 hover:text-white hover:border-text-white"
+              className="flex items-center px-3 py-2  text-slate-200"
             >
-              <XMarkIcon className="h-5 w-5 " />
+              <XMarkIcon className="h-10 w-10 " />
             </button>
           )}
         </div>
@@ -66,13 +67,13 @@ const Navbar = () => {
           <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 ">
             {navLinks.map((link, index) => (
               <li key={index}>
-                <Navlink href={link.path} title={link.title} l33t={link.l33t} />
+                <Navlink href={link.path} title={link.title} setNavbarOpen={setNavBarOpen}/>
               </li>
             ))}
           </ul>
         </div>
       </div>
-      {navBarOpen ? <MenuOverlay links={navLinks} /> : null}
+      {navBarOpen ? <MenuOverlay links={navLinks} setNavbarOpen={setNavBarOpen}/> : null}
     </nav>
   );
 };

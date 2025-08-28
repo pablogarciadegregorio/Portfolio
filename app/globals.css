@@ -1,6 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --gradienteBoton: linear-gradient(90deg, rgba(180, 125, 242, 1) 0%, rgba(102, 65, 211, 1) 90%);
+  --gradienteBotonHover: linear-gradient(270deg, rgba(144, 111, 241, 1) 0%, rgba(202, 169, 240, 1) 83%);
+  --gradienteNavBar:radial-gradient(circle,rgba(29,15,58,1)_0%,rgba(16,8,29,1)_65%);
+}
+
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -16,6 +22,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -24,4 +34,50 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; 
+}
+
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.text-fill-animation {
+  /* Por defecto, el texto es blanco */
+  color: white; 
+  /* El fondo del gradiente se posiciona a la derecha para que no se vea */
+  background: linear-gradient(
+    to right,
+    rgba(180, 125, 242, 1) 50%,
+    transparent 50%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* El color del texto se hace transparente para que se pueda ver el fondo */
+  -webkit-text-fill-color: transparent;
+
+  transition: background-position 0.5s ease-in-out;
+}
+
+.text-fill-animation:hover {
+  /* En hover, el fondo se mueve a la izquierda, rellenando el texto de izq. a der. */
+  background-position: 0 0;
+}
+
+.mix-blend-color-mode {
+  mix-blend-mode: color; /* Puedes usar 'multiply', 'overlay', etc. */
 }

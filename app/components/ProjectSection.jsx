@@ -8,49 +8,62 @@ import ProjectModal from "./ProjectModal";
 const projectsData = [
   {
     id: 1,
-    title: "React Portfolio Website",
-    description: "Next.js, Typescript, React, Tailwind y Framer Motion \n ‎‎‎‎‎‎‎",
-    image: "images/projects/1.jpg",
-    tag: ["Todos", "Web"],
-    gitUrl: "/",
+    title: "Collagenious",
+    description:
+      "Identidad visual, caso de estudio, diseño, front y backend. Email marketing.",
+    image: "images/projects/collagenious.jpg",
+    tag: ["Todos", "Web", "Diseño", "UX"],
     previewUrl: "/",
+    slug: "collagenious",
   },
   {
     id: 2,
-    title: "Waterpolo Tactic Board",
-    description: "Pizarra táctica de WP. React, Tailwind y Framer Motion",
-    image: "/images/projects/wp-tactic.jpg",
-    tag: ["Todos", "Web"],
-    gitUrl: "/",
+    title: "25 Aniversario Rivas Ruido",
+    description:
+      "Identidad visual y desarrollo web. Generación de entradas. Redes sociales.",
+    image: "images/projects/rivasruido.jpg",
+    tag: ["Todos", "Web", "Diseño", "UX"],
     previewUrl: "/",
+    slug: "rivas-ruido",
+  },
+  {
+    id: 6,
+    title: "Naming Musco",
+    description: "Investigación y propuesta de naming para farmacia.",
+    image: "/images/projects/musco-naming/musco-thumbnail-lite.jpg",
+    tag: ["Todos", "Diseño", "UX"],
+    previewUrl: "/",
+    slug: "musco",
   },
   {
     id: 3,
-    title: "Gamer Groove",
-    description: "Juego de Quiz de música de videojuegos. React y Sass",
-    image: "/images/projects/gamer-groove.jpg",
-    tag: ["Todos", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 4,
     title: "Polo Guru",
-    description: "Herramienta todo en uno para entrenadores de waterpolo",
+    description:
+      "Herramienta todo en uno para entrenadores de waterpolo. Caso de estudio.",
     image: "/images/projects/pologuru.jpg",
     tag: ["Todos", "UX"],
     gitUrl: "/",
     previewUrl: "/",
+    slug: "polo-guru",
   },
-  
+  {
+    id: 4,
+    title: "Gamer Groove",
+    description: " Quiz de música de videojuegos estilo pixel-art.",
+    image: "/images/projects/gamer-groove.jpg",
+    tag: ["Todos", "Web"],
+    previewUrl: "https://videogame-music-quiz.vercel.app/",
+    slug: "gamer-groove",
+  },
+
   {
     id: 5,
-    title: "Merchandising",
-    description: "Diseño de productos para bandas",
-    image: "/images/projects/reloja.jpg",
-    tag: ["Todos", "Diseño"],
-    gitUrl: "/",
-    previewUrl: "/",
+    title: "Waterpolo Tactic Board",
+    description: "Pizarra táctica de waterpolo con elementos arrastrables.",
+    image: "/images/projects/wp-tactic.jpg",
+    tag: ["Todos", "Web"],
+    previewUrl: "https://waterpolo-tactic-board.vercel.app/",
+    slug: "waterpolo-tactic-board",
   },
 ];
 
@@ -59,8 +72,6 @@ const ProjectSection = ({ modalState, handleModalState }) => {
   const [tag, setTag] = useState("Todos");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const [closeModal, setCloseModal] = useState(!modalState);
-
 
   const handleTagChange = (newTag) => {
     setTag(newTag);
@@ -71,28 +82,17 @@ const ProjectSection = ({ modalState, handleModalState }) => {
   );
 
   const cardVariants = {
-    initial: { y: 50, opacity: 0 },
-    animate: { y: 100, opacity: 1 },
+    initial: { x: -100, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
   };
-
-  const handleCloseModal = (closed) => {
-    handleModalState(!closed);
-  };
-
-  const handleModalSelect = (name) => {
-    setProjectName(name);
-  };
-
 
   return (
-    <section className="relative scroll-mt-32" id="projectSection">
-      <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
-        Mis Proyectos
+    <section className="relative scroll-mt-32 px-4" id="projectSection">
+      <h2 className="text-center text-4xl  sm:text-3xl md:text-5xl lg:text-5xl font-bold text-white md:mb-4">
+        Mis Trabajos
       </h2>
 
-      
-
-      <div className="text-white  md:flex-row justify-center items-center flex flex-wrap gap-2 py-6 ">
+      <div className="text-white  md:flex-row justify-center items-center flex flex-wrap gap-2 py-8  2xl:mb-8">
         <ProjectTag
           onClick={handleTagChange}
           name="Todos"
@@ -115,36 +115,25 @@ const ProjectSection = ({ modalState, handleModalState }) => {
         />
       </div>
 
-      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12 -z-1">
+      <ul
+        ref={ref}
+        className="flex flex-row overflow-x-auto whitespace-nowrap scrollbar-hide h-auto sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-4 md:gap-12 -z-1"
+      >
         {filteredProjects.map((project, index) => (
-          <motion.li
-            className="z-1"
-            key={index}
-            variants={cardVariants}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.5, delay: index * 0.3 }}
-          >
+          <motion.li className="z-10">
             <ProjectCard
-              handleModalSelect={handleModalSelect}
-              handleCloseModal={handleCloseModal}
-              className="-z-1"
+              className="-z-1 "
               key={project.id}
               title={project.title}
               description={project.description}
               imgUrl={project.image}
               gitUrl={project.gitUrl}
               previewUrl={project.previewUrl}
+              slug={project.slug}
             />
           </motion.li>
         ))}
       </ul>
-      <ProjectModal
-        projectName={projectName}
-        closeModal={modalState}
-        handleCloseModal={handleCloseModal}
-        className="z-[1055]"
-      />
     </section>
   );
 };

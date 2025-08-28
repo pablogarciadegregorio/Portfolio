@@ -29,12 +29,12 @@ export default function Home() {
   return (
     <main
       className={
-        `flex min-h-screen flex-col bg-gradienteFondo overflow-x-hidden` +
+        `flex min-h-screen flex-col bg-[radial-gradient(circle,rgba(39,21,77,1)_0%,rgba(16,8,29,1)_65%)] overflow-x-hidden` +
         (modalState ? " sticky" : " ")
       }
     >
       <Navbar />
-      <div className="container mx-auto px-12 py-4 mt-24 relative ">
+      <div className=" container mx-auto md:px-4 lg:px-8 xl:px-32 py-4 mt-16 sm:mt-24 relative ">
         <Background/>
         <HeroSection/>
         {/* <AchievementsSection />  */}
