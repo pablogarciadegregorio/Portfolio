@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Butcherman&display=swap');
+
+
 
 @theme {
   --gradienteBoton: linear-gradient(90deg, rgba(180, 125, 242, 1) 0%, rgba(102, 65, 211, 1) 90%);
@@ -6,12 +9,19 @@
   --gradienteNavBar:radial-gradient(circle,rgba(29,15,58,1)_0%,rgba(16,8,29,1)_65%);
 }
 
-
+@font-face {  
+  font-family: "Creepster";
+  src: url("/images/projects/Collagenious/Creepster-Regular.ttf") format("truetype");
+  font-weight: 400; 
+  font-style: normal;
+  font-display: swap; 
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,6 +44,12 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.frankenstein {
+  font-family: "Creepster", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
 
 

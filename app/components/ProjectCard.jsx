@@ -30,7 +30,7 @@ const ProjectCard = ({
       <div className="group cursor-pointer w-[70vw]  sm:w-[280px] md:w-[320px] lg:w-[300px] 2xl:w-[375px] sm:mb-8  ">
         <div
           className="h-[230px]  w-full sm:h-[210px] md:h-[240px]  lg:h-[225px] 2xl:h-[281px] rounded-t-xl relative grayscale-0  z-20"
-          style={{ background: `url(${imgUrl})`, backgroundSize: "cover" }}
+          style={{ background: `url(${imgUrl})`, backgroundSize: "cover", backgroundPosition: "center" }}
         >
           <div
             className="absolute top-0 left-0 w-full h-full
@@ -41,8 +41,8 @@ const ProjectCard = ({
           ></div>
         </div>
         <div className=" text-white rounded-b-xl text-wrap bg-[#181818] w-full h-[150px] xl:h-[150px] py-6 px-4 ">
-          <h5 className=" text-xl font-bold mb-2">{title}</h5>
-          <p className="text-[#ADB7BE]">{description}</p>
+          <h5 className=" text-xl font-bold mb-2 line-clamp-1">{title}</h5>
+          <p className="text-[#ADB7BE] overflow-hidden ">{description}</p>
         </div>
       </div>
     </Tag>
